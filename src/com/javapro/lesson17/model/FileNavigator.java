@@ -54,7 +54,6 @@ public class FileNavigator {
     for (List<FileData> value : listMap.values()) {
       listSortBySize.addAll(value);
     }
-    System.out.println(listSortBySize);
     return listSortBySize.stream()
         .sorted(Comparator.comparing(FileData::getSize)).toList();
   }
