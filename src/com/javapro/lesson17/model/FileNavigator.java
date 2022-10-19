@@ -20,7 +20,7 @@ public class FileNavigator {
         System.out.printf("PathToKey %s \n FileDate: {name: %s, size: %s, pathToFile:%s}\n",
             pathToFile, data.getNameFile(), data.getSize(), data.getPathToFile());
       } else {
-        listMap.putIfAbsent(pathToFile,new ArrayList<>());
+        listMap.putIfAbsent(pathToFile, new ArrayList<>());
         listMap.get(data.getPathToFile()).add(data);
       }
     }
@@ -31,10 +31,7 @@ public class FileNavigator {
   }
 
   public List<FileData> filterBySize(int maxSize) {
-    List<FileData> listData = new ArrayList<>();
-    for (List<FileData> value : listMap.values()) {
-      listData.addAll(value);
-    }
+    List<FileData> listData = getFileDataList();
     List<FileData> newSize = new ArrayList<>();
     for (FileData data : listData) {
       if (data.getSize() <= maxSize) {
@@ -50,12 +47,17 @@ public class FileNavigator {
   }
 
   public List<FileData> sortBySize() {
-    List<FileData> listSortBySize = new ArrayList<>();
-    for (List<FileData> value : listMap.values()) {
-      listSortBySize.addAll(value);
-    }
+    List<FileData> listSortBySize = getFileDataList();
     return listSortBySize.stream()
         .sorted(Comparator.comparing(FileData::getSize)).toList();
+  }
+
+  private List<FileData> getFileDataList() {
+    List<FileData> listData = new ArrayList<>();
+    for (List<FileData> value : listMap.values()) {
+      listData.addAll(value);
+    }
+    return listData;
   }
 
   @Override
