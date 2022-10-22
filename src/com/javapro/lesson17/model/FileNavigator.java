@@ -49,7 +49,8 @@ public class FileNavigator {
   public List<FileData> sortBySize() {
     List<FileData> listSortBySize = getFileDataList();
     return listSortBySize.stream()
-        .sorted(Comparator.comparing(FileData::getSize)).toList();
+        .sorted(Comparator.comparing(FileData::getSize))
+        .toList();
   }
 
   private List<FileData> getFileDataList() {
