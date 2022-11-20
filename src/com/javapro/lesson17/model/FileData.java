@@ -1,6 +1,11 @@
 package com.javapro.lesson17.model;
 
 
+/**
+ * @author Andrii Andriutsa
+ * The class represents a specific file and consists of: file name, size in bytes, file path.
+ */
+
 public class FileData {
 
   private final String nameFile;
@@ -32,7 +37,7 @@ public class FileData {
         "nameFile='" + nameFile + '\'' +
         ", sizeFile=" + sizeFile +
         ", pathToFile='" + pathToFile + '\'' +
-        '}'+"\n";
+        '}' + "\n";
   }
 }
 
